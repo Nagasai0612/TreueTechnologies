@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Length Converter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        .container {
+            text-align: center;
+            margin-top: 20px;
+            background-color: blanchedalmond;
+            padding: 20px;
+            line-height: 30px;
+        }
+
+
+        #result {
+            text-align: center;
+            color: black;
+            font-size: 24px;
+            margin: 25px;
+            padding: 25px;
+            background-color: crimson;
+        }
+    </style>
+</head>
+<body>
+    <h1> Length Converter </h1>
+    <div class="container">
+        
+        <label for="length">Enter length in meters:</label>
+        <input type="number" id="length" step="any" placeholder="Enter length">
+        <br>
+        <label for="unit">Select unit:</label>
+        <select id="unit">
+            <option value="meters">Meters</option>
+            <option value="centimeters">Centimeters</option>
+            <option value="kilometers">Kilometers</option>
+            <option value="millimeters">Millimeters</option>
+        </select>
+        <br>
+        <button onclick="convertLength()">Convert</button></div>
+        <div id="result"></div>
+    </div>
+
+    <script>
+        function convertLength() 
+        {
+            const inputValue = parseFloat(document.getElementById('length').value);
+            const selectedUnit = document.getElementById('unit').value;
+
+            let convertedValue;
+            switch (selectedUnit) {
+                case 'meters':
+                    convertedValue = inputValue;
+                    break;
+                case 'centimeters':
+                    convertedValue = inputValue * 100;
+                    break;
+                case 'kilometers':
+                    convertedValue = inputValue / 1000;
+                    break;
+                case 'millimeters':
+                    convertedValue = inputValue * 1000;
+                    break;
+                default:
+                    convertedValue = 'Invalid unit';
+            }
+
+            const resultElement = document.getElementById('result');
+            if (!isNaN(convertedValue) && convertedValue !== 'Invalid unit') {
+                resultElement.innerText = `Converted length: ${convertedValue} ${selectedUnit}`;
+            } else {
+                resultElement.innerText = 'Please enter a valid length and select a unit.';
+            }
+        }
+    </script>
+</body>
+</html>
