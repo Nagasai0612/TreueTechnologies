@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Image Gallery</title>
+
+    <style>
+        *{
+            background-color: rgb(245, 147, 0);
+            text-align: center;
+            margin: 1%;
+            padding: 1px;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+        }
+
+        body{
+            background-color: burlywood
+        }
+
+        .container{
+
+            width: 97.7%;
+            display: grid;
+            grid-template-columns: repeat(auto-fix, minmax(200px, 1fr));
+            grid-gap: 3px;
+        }
+
+        .container img{
+            width: 20%;
+            cursor: pointer;
+        }
+
+
+        .full-img{
+            width: 100%;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.9);
+            position: fixed;
+            top: 0;
+            left: 0;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            
+        }
+
+        .full-img img{
+            width: 50%;
+            max-width: 450px;
+        }
+
+        .full-img span{
+            position: absolute;
+            top: 5%;
+            right: 5%;
+            font-size: 50px;
+            color: white;
+            cursor: pointer;
+        }
+
+ 
+    </style>
+    </head>
+
+    <body>
+        <h1>Image Gallery</h1>
+        <div class="full-img" id="Imagebox">
+            <img src="images/realme.jpeg" id="image">
+            <span onclick="closeImage()">X</span>
+        </div>
+        <div class="container">
+            <img src="images/realme.jpeg" onclick="openImage(this.src)">
+            <img src="images/redmi.jpeg" onclick="openImage(this.src)">
+            <img src="images/images.jpeg" onclick="openImage(this.src)">
+            <img src="images/m.jpeg" onclick="openImage(this.src)">
+            <img src="images/nokia.jpeg" onclick="openImage(this.src)">
+            <img src="images/samsung.jpeg" onclick="openImage(this.src)">
+        </div>
+        <script>
+
+            var Imagebox = document.getElementById("Imagebox");
+            var image = document.getElementById("image");
+
+            function openImage(pic){
+                Imagebox.style.display= "flex";
+                image.src=pic;
+            }
+
+            function closeImage(){
+                Imagebox.style.display= "none";
+            }
+        </script>
+
+    </body>
+    
+</html>
